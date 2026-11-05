@@ -1,0 +1,47 @@
+// =============================================================
+// VARIABLES GLOBALES
+// Music · UI Kit extraído de Figma
+// =============================================================
+
+// -------------------------------------------------------------
+// Paleta corporativa
+// -------------------------------------------------------------
+$color-primario: #be3d19;
+$color-primario-oscuro: #8a2c0c;
+$color-secundario: #3b1f3b;
+$color-fondo: #ffffff;
+$color-superficie: #f7f1ec;
+$color-borde: #e3d9d2;
+$color-texto: #231a1d;
+$color-texto-suave: #6b5e5a;
+
+// -------------------------------------------------------------
+// Tipografía
+// -------------------------------------------------------------
+$fuente-base: "Inter", "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+$tamano-base: 0.875rem; // 14px
+$tamano-h1: 2rem; // 32px
+$tamano-h2: 1.25rem; // 20px
+$tamano-h3: 1rem; // 16px
+
+// -------------------------------------------------------------
+// Medidas del layout de escritorio
+// -------------------------------------------------------------
+$ancho-menu: 224px;
+$alto-cabecera: 72px;
+$alto-cabecera-inicio: 128px;
+$alto-reproductor: 96px;
+
+// Medidas de móvil (diseño Figma de 402px de ancho)
+$punto-movil: 767.98px;
+$alto-cabecera-movil: 96px;
+$alto-nav-movil: 97px;
+$alto-reproductor-movil: 80px;
+
+// -------------------------------------------------------------
+// Radios y transición
+// -------------------------------------------------------------
+$radio-tarjeta: 10px;
+$radio-campo: 8px;
+$radio-boton: 100px;
+$transicion: 150ms ease;

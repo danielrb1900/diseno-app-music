@@ -1,0 +1,1477 @@
+﻿// =============================================================
+// COMPONENTES Y ESTRUCTURA
+// Layout de escritorio de Music.
+// =============================================================
+
+@use 'variables' as *;
+@use 'mixins' as *;
+
+// -------------------------------------------------------------
+// Cabecera
+// -------------------------------------------------------------
+.cabecera {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: $ancho-menu;
+  z-index: 1045;
+  height: $alto-cabecera;
+  background-color: $color-fondo;
+}
+
+.pagina-inicio .cabecera {
+  height: $alto-cabecera-inicio;
+}
+
+// Marca (logo + texto) sobre el menú lateral
+.marca {
+  position: fixed;
+  top: 24px;
+  left: 24px;
+  z-index: 1035;
+  display: flex;
+  align-items: center;
+  gap: 17px;
+}
+
+.marca__logo {
+  width: 36px;
+  height: 36px;
+}
+
+.marca__texto {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.marca__titulo {
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.marca__subtitulo {
+  color: $color-borde;
+  font-size: 12px;
+  line-height: 1.2;
+}
+
+// Botones de sesión de la cabecera
+.cabecera__acciones {
+  position: absolute;
+  top: 24px;
+  right: 32px;
+  z-index: 2;
+  display: flex;
+  gap: 12px;
+}
+
+.cabecera .cabecera__acciones .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 32px;
+  padding: 0;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.cabecera__acciones .btn-secundario {
+  width: 107px;
+}
+
+.cabecera__acciones .btn-primary {
+  width: 100px;
+}
+
+// Acceso al perfil en móvil (oculto en escritorio)
+.avatar-movil {
+  display: none;
+}
+
+// Buscador de la cabecera (solo en Inicio)
+.buscador-cabecera {
+  position: absolute;
+  top: 72px;
+  left: calc(50% - 52px);
+  display: flex;
+  align-items: center;
+  width: 345px;
+  height: 50px;
+  padding: 0 24px;
+  border: 1px solid $color-borde;
+  border-radius: $radio-boton;
+  background-color: $color-fondo;
+  transform: translateX(-50%);
+  transition: border-color $transicion, box-shadow $transicion;
+
+  img {
+    width: 24px;
+    height: 24px;
+    margin-right: 12px;
+  }
+
+  .form-control {
+    width: 100%;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background-color: transparent;
+    color: $color-texto;
+    font-size: 16px;
+
+    &:focus {
+      box-shadow: none;
+    }
+  }
+
+  &:focus-within {
+    border-color: $color-primario;
+    box-shadow: 0 0 0 1px $color-primario;
+  }
+}
+
+// -------------------------------------------------------------
+// Menú lateral
+// -------------------------------------------------------------
+.menu-lateral {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1030;
+  width: $ancho-menu;
+  padding-top: 92px;
+  background-color: $color-secundario;
+}
+
+.menu-lateral__lista {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.menu-lateral__enlace {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 19px;
+  height: 32px;
+  padding-left: 22px;
+  color: $color-borde;
+  font-size: 14px;
+  line-height: 1;
+  transition: color $transicion;
+
+  img {
+    width: 24px;
+    height: 24px;
+  }
+
+  &:hover,
+  &:focus {
+    color: #ffffff;
+  }
+
+  @include foco(#ffffff);
+
+  &.activo {
+    color: #ffffff;
+    font-weight: 700;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      width: 4px;
+      background-color: $color-primario;
+    }
+  }
+}
+
+// -------------------------------------------------------------
+// Contenido principal
+// -------------------------------------------------------------
+.contenido {
+  min-height: 100vh;
+  margin-left: $ancho-menu;
+  padding: 92px 40px 120px 32px;
+}
+
+.pagina-inicio .contenido {
+  padding: 219px 102px 120px 19px;
+}
+
+.pagina-perfil .titulo-pagina {
+  margin-bottom: 40px;
+}
+
+// -------------------------------------------------------------
+// Tarjetas de canciones y álbumes
+// -------------------------------------------------------------
+.tarjeta-cancion {
+  display: block;
+  height: 100%;
+  border-radius: $radio-tarjeta;
+  color: inherit;
+
+  .card {
+    height: 100%;
+    padding: 10px;
+    border: 1px solid $color-borde;
+    border-radius: $radio-tarjeta;
+    background-color: $color-fondo;
+    transition: border-color $transicion;
+  }
+
+  &:hover .card {
+    border-color: $color-primario;
+  }
+
+  @include foco;
+}
+
+.tarjeta-cancion__imagen {
+  width: 100%;
+  height: 246px;
+  border-radius: 0;
+  object-fit: cover;
+}
+
+.tarjeta-cancion__cuerpo {
+  padding: 14px 0 0;
+}
+
+.tarjeta-cancion__titulo {
+  margin: 0 0 3px;
+  color: $color-texto;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.25;
+
+  @include truncar;
+}
+
+.tarjeta-cancion__artista {
+  margin: 0;
+  color: $color-texto-suave;
+  font-size: 14px;
+  line-height: 1.3;
+
+  @include truncar;
+}
+
+// -------------------------------------------------------------
+// Página Buscar
+// -------------------------------------------------------------
+.buscador-pagina {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  margin: 0 0 32px;
+}
+
+.buscador-pagina__campo {
+  position: relative;
+  display: flex;
+  flex: 1 1 auto;
+  align-items: center;
+  min-width: 0;
+  height: 50px;
+  padding: 0 20px;
+  border: 1px solid $color-borde;
+  border-radius: $radio-boton;
+  background-color: $color-fondo;
+  transition: border-color $transicion, box-shadow $transicion;
+
+  img {
+    width: 24px;
+    height: 24px;
+    margin-right: 12px;
+  }
+
+  .form-control {
+    width: 100%;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background-color: transparent;
+    color: $color-texto;
+    font-size: 16px;
+
+    &:focus {
+      box-shadow: none;
+    }
+  }
+
+  &:focus-within {
+    border-color: $color-primario;
+    box-shadow: 0 0 0 1px $color-primario;
+  }
+}
+
+.seccion-generos h2 {
+  margin-bottom: 16px;
+}
+
+// -------------------------------------------------------------
+// Géneros
+// -------------------------------------------------------------
+.genero {
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+  min-height: 146px;
+  padding: 18px;
+  border-radius: 0;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.2;
+  transition: filter $transicion;
+
+  &:hover,
+  &:focus {
+    color: #ffffff;
+    filter: brightness(0.93);
+  }
+
+  @include foco(currentColor);
+}
+
+.genero--primario {
+  background-color: $color-primario;
+}
+
+.genero--secundario {
+  background-color: $color-secundario;
+}
+
+.genero--oscuro {
+  background-color: $color-texto;
+}
+
+.genero--claro {
+  background-color: $color-superficie;
+  color: $color-texto;
+
+  &:hover,
+  &:focus {
+    color: $color-texto;
+  }
+}
+
+// -------------------------------------------------------------
+// Biblioteca
+// -------------------------------------------------------------
+.biblioteca__barra {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.biblioteca__pills {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  .nav-link {
+    height: 42px;
+    padding: 0 22px;
+    border: 1px solid $color-borde;
+    border-radius: $radio-boton;
+    background-color: $color-fondo;
+    color: $color-texto;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 40px;
+    white-space: nowrap;
+
+    &:hover,
+    &:focus {
+      border-color: $color-secundario;
+      background-color: $color-superficie;
+      color: $color-texto;
+    }
+
+    &.active {
+      border-color: $color-secundario;
+      background-color: $color-secundario;
+      color: #ffffff;
+      font-weight: 700;
+    }
+
+    @include foco;
+  }
+}
+
+.biblioteca__acciones {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.buscador-biblioteca {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 260px;
+  height: 42px;
+  padding: 0 16px;
+  border: 1px solid $color-borde;
+  border-radius: $radio-boton;
+  background-color: $color-fondo;
+  transition: border-color $transicion, box-shadow $transicion;
+
+  img {
+    width: 18px;
+    height: 18px;
+    margin-right: 10px;
+  }
+
+  .form-control {
+    width: 100%;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background-color: transparent;
+    font-size: 14px;
+
+    &:focus {
+      box-shadow: none;
+    }
+  }
+
+  &:focus-within {
+    border-color: $color-primario;
+    box-shadow: 0 0 0 1px $color-primario;
+  }
+}
+
+.biblioteca-item {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 10px;
+  border: 1px solid $color-borde;
+  border-radius: $radio-tarjeta;
+  background-color: $color-fondo;
+  transition: border-color $transicion;
+
+  &:hover {
+    border-color: $color-primario;
+  }
+}
+
+.biblioteca-item__enlace {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-width: 0;
+  color: inherit;
+
+  @include foco;
+}
+
+.biblioteca-item__portada {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background-color: $color-superficie;
+  color: $color-texto;
+
+  > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &--crear {
+    border: 1px solid $color-borde;
+    background-color: $color-fondo;
+
+    > img {
+      width: 40px;
+      height: 40px;
+      padding: 8px;
+      border-radius: 4px;
+      background-color: $color-superficie;
+      object-fit: contain;
+    }
+  }
+}
+
+.biblioteca-item__cuerpo {
+  padding-top: 14px;
+}
+
+.biblioteca-item__titulo {
+  display: block;
+  margin: 0 0 3px;
+  color: $color-texto;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.3;
+
+  @include truncar;
+}
+
+.biblioteca-item__meta {
+  display: block;
+  margin: 0;
+  color: $color-texto-suave;
+  font-size: 14px;
+  line-height: 1.3;
+}
+
+// Menú de opciones de cada fila (solo visible en móvil)
+.biblioteca-item__opciones {
+  display: none;
+}
+
+// -------------------------------------------------------------
+// Perfil
+// -------------------------------------------------------------
+.perfil__contenido {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.perfil__cabecera {
+  text-align: center;
+}
+
+.perfil__avatar {
+  @include centrar;
+  width: 90px;
+  height: 90px;
+  margin: 0 auto;
+  border-radius: 50%;
+  background-color: $color-secundario;
+
+  img {
+    width: 48px;
+    height: 48px;
+  }
+}
+
+.perfil__nombre {
+  margin: 12px 0 2px;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.perfil__usuario {
+  margin: 0;
+  color: $color-texto-suave;
+  font-size: 14px;
+}
+
+.perfil__estadisticas {
+  display: flex;
+  justify-content: center;
+  margin: 24px 0 28px;
+  padding: 0;
+  list-style: none;
+
+  li {
+    min-width: 92px;
+    padding: 0 26px;
+    text-align: center;
+
+    + li {
+      border-left: 1px solid $color-borde;
+    }
+  }
+
+  strong {
+    display: block;
+    color: $color-texto;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+
+  span {
+    display: block;
+    margin-top: 3px;
+    color: $color-texto-suave;
+    font-size: 12px;
+    line-height: 1.3;
+  }
+}
+
+.perfil__opciones {
+  overflow: hidden;
+  border: 1px solid $color-borde;
+  border-radius: $radio-tarjeta;
+  background-color: $color-fondo;
+}
+
+.perfil__lista {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  li + li {
+    border-top: 1px solid $color-borde;
+  }
+}
+
+.perfil__enlace {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 24px;
+  color: $color-texto;
+  font-size: 14px;
+
+  &:hover,
+  &:focus {
+    background-color: $color-superficie;
+    color: $color-texto;
+  }
+
+  @include foco;
+}
+
+.perfil__icono {
+  width: 24px;
+  height: 24px;
+  flex: 0 0 auto;
+  object-fit: contain;
+}
+
+.perfil__flecha {
+  width: 8px;
+  height: 14px;
+  margin-left: auto;
+  flex: 0 0 auto;
+}
+
+// -------------------------------------------------------------
+// Reproductor inferior
+// -------------------------------------------------------------
+.reproductor {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1040;
+  display: grid;
+  grid-template-columns: minmax(280px, 400px) auto minmax(220px, 1fr);
+  align-items: center;
+  gap: 24px;
+  height: $alto-reproductor;
+  padding: 0 32px;
+  background-color: $color-superficie;
+}
+
+.reproductor__pista {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  min-width: 0;
+}
+
+.reproductor__portada {
+  width: 64px;
+  height: 64px;
+  flex: 0 0 64px;
+  object-fit: cover;
+}
+
+.reproductor__info {
+  min-width: 0;
+}
+
+.reproductor__titulo {
+  margin: 0 0 2px;
+  color: $color-texto;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.25;
+
+  @include truncar;
+}
+
+.reproductor__artista {
+  margin: 0;
+  color: $color-texto-suave;
+  font-size: 14px;
+  line-height: 1.25;
+
+  @include truncar;
+}
+
+.reproductor__controles {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.reproductor__control {
+  @include centrar;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background-color: transparent;
+  color: $color-texto;
+  transition: background-color $transicion, opacity $transicion;
+
+  img {
+    width: 24px;
+    height: 24px;
+  }
+
+  &:hover,
+  &:focus {
+    background-color: $color-borde;
+  }
+
+  @include foco;
+}
+
+.reproductor__control--play {
+  background-color: transparent;
+
+  img {
+    width: 36px;
+    height: 36px;
+  }
+
+  &:hover,
+  &:focus {
+    background-color: transparent;
+    opacity: 0.85;
+  }
+}
+
+.reproductor__progreso {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  max-width: 560px;
+  justify-self: end;
+}
+
+.reproductor__tiempo {
+  flex: 0 0 auto;
+  color: $color-texto-suave;
+  font-size: 12px;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+// -------------------------------------------------------------
+// Barra de progreso
+// Se deja el control nativo para que el relleno siga al pomo
+// sin necesidad de JavaScript.
+// -------------------------------------------------------------
+.barra-progreso {
+  width: 100%;
+  height: 20px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  accent-color: $color-primario;
+  cursor: pointer;
+
+  @include foco;
+}
+
+// -------------------------------------------------------------
+// Pantalla del reproductor
+// -------------------------------------------------------------
+.reproductor-pagina {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  padding: 40px 64px 48px;
+}
+
+.reproductor-pagina__barra {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.reproductor-pagina__icono {
+  @include centrar;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background-color: transparent;
+  color: $color-texto;
+
+  img {
+    width: 20px;
+    height: 20px;
+  }
+
+  &:hover,
+  &:focus {
+    background-color: $color-superficie;
+  }
+
+  @include foco;
+}
+
+.reproductor-pagina__contexto {
+  position: absolute;
+  left: 50%;
+  margin: 0;
+  color: $color-texto;
+  font-size: 14px;
+  font-weight: 600;
+  text-align: center;
+  transform: translateX(-50%);
+}
+
+.reproductor-pagina__contenido {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 440px;
+  margin-top: 55px;
+}
+
+.reproductor-pagina__portada {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: $radio-tarjeta;
+  object-fit: cover;
+}
+
+.reproductor-pagina__meta {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.reproductor-pagina__titulo {
+  margin: 0 0 2px;
+  font-size: 32px;
+  line-height: 1.15;
+}
+
+.reproductor-pagina__artista {
+  margin: 0;
+  color: $color-texto-suave;
+  font-size: 16px;
+}
+
+.reproductor-pagina__me-gusta {
+  @include centrar;
+  flex: 0 0 auto;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid $color-borde;
+  border-radius: 50%;
+  background-color: transparent;
+
+  img {
+    width: 20px;
+    height: 18px;
+  }
+
+  &:hover,
+  &:focus {
+    background-color: $color-superficie;
+  }
+
+  @include foco;
+}
+
+.reproductor-pagina__progreso {
+  margin-top: 24px;
+}
+
+.reproductor-pagina__tiempos {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  color: $color-texto-suave;
+  font-size: 12px;
+  line-height: 1;
+}
+
+.reproductor-pagina__controles {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  margin-top: 24px;
+}
+
+.reproductor-pagina__control {
+  @include centrar;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background-color: transparent;
+
+  img {
+    width: 24px;
+    height: 24px;
+  }
+
+  &:hover,
+  &:focus {
+    background-color: $color-superficie;
+  }
+
+  @include foco;
+
+  &--play {
+    width: 56px;
+    height: 56px;
+    background-color: transparent;
+
+    img {
+      width: 56px;
+      height: 56px;
+    }
+
+    &:hover,
+    &:focus {
+      background-color: transparent;
+      opacity: 0.85;
+    }
+  }
+}
+
+.reproductor-pagina__acciones {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+  width: 100%;
+  max-width: 700px;
+  margin-top: 48px;
+}
+
+.reproductor-pagina__accion {
+  @include centrar;
+  flex-direction: column;
+  gap: 6px;
+  height: 68px;
+  padding: 0 12px;
+  border: 1px solid $color-borde;
+  border-radius: 8px;
+  background-color: transparent;
+  color: $color-texto;
+  font-size: 12px;
+
+  img {
+    width: 20px;
+    height: 20px;
+  }
+
+  &:hover,
+  &:focus {
+    background-color: $color-superficie;
+  }
+
+  @include foco;
+}
+
+// =============================================================
+// VERSIÓN MÓVIL (menos de 768px)
+// Diseño de referencia: frames móviles de Figma (402 x 874).
+// Todo lo de este bloque deja intacto el escritorio.
+// =============================================================
+@include movil {
+  // -----------------------------------------------------------
+  // Cabecera: logo a la izquierda y acceso al perfil a la derecha
+  // -----------------------------------------------------------
+  .cabecera,
+  .pagina-inicio .cabecera {
+    right: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: $alto-cabecera-movil;
+    padding: 8px 15px 0 24px;
+  }
+
+  .marca {
+    position: static;
+    gap: 0;
+  }
+
+  .marca__texto {
+    display: none;
+  }
+
+  .cabecera__acciones,
+  .buscador-cabecera {
+    display: none;
+  }
+
+  .avatar-movil {
+    @include centrar;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: $color-superficie;
+
+    img {
+      width: 20px;
+      height: 20px;
+    }
+
+    @include foco;
+  }
+
+  // -----------------------------------------------------------
+  // Menú lateral convertido en barra inferior
+  // -----------------------------------------------------------
+  .menu-lateral {
+    top: auto;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1050;
+    width: auto;
+    height: $alto-nav-movil;
+    padding-top: 0;
+  }
+
+  .menu-lateral nav,
+  .menu-lateral__lista {
+    height: 100%;
+  }
+
+  .menu-lateral__lista {
+    flex-direction: row;
+    gap: 0;
+    padding: 0 9px;
+  }
+
+  .menu-lateral__lista li {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+
+  .menu-lateral__enlace {
+    flex-direction: column;
+    justify-content: center;
+    gap: 4px;
+    height: 100%;
+    padding-left: 0;
+    font-size: 16px;
+    line-height: 1;
+    text-align: center;
+
+    &.activo {
+      font-weight: 700;
+
+      &::before {
+        display: none;
+      }
+    }
+  }
+
+  // -----------------------------------------------------------
+  // Contenido general
+  // -----------------------------------------------------------
+  .contenido,
+  .pagina-inicio .contenido {
+    margin-left: 0;
+    padding: 100px 16px 196px;
+  }
+
+  // Los títulos que no aparecen en los frames móviles se ocultan
+  // visualmente, pero se mantienen para los lectores de pantalla.
+  .pagina-inicio .contenido h1,
+  .pagina-inicio .contenido h2,
+  .pagina-perfil .titulo-pagina {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  .contenido .titulo-pagina {
+    margin-bottom: 4px;
+    font-size: 32px;
+  }
+
+  .pagina-biblioteca .titulo-pagina {
+    margin-bottom: 2px;
+  }
+
+  // -----------------------------------------------------------
+  // Inicio: tarjetas en 2 columnas y álbumes a ancho completo
+  // -----------------------------------------------------------
+  .pagina-inicio .row {
+    --bs-gutter-x: 20px;
+  }
+
+  .tarjeta-cancion__imagen {
+    height: auto;
+    aspect-ratio: 1 / 1;
+  }
+
+  .tarjeta-cancion--album .tarjeta-cancion__imagen {
+    aspect-ratio: 4 / 3;
+  }
+
+  .tarjeta-cancion__cuerpo {
+    padding-top: 9px;
+  }
+
+  // -----------------------------------------------------------
+  // Buscar: buscador y rejilla de géneros
+  // -----------------------------------------------------------
+  .buscador-pagina {
+    gap: 13px;
+    margin-bottom: 0;
+  }
+
+  .buscador-pagina__campo {
+    height: 48px;
+    padding: 0 16px;
+  }
+
+  .seccion-generos {
+    margin-top: 28px;
+
+    h2 {
+      margin-bottom: 8px;
+      font-size: 18px;
+    }
+  }
+
+  .pagina-buscar .seccion-generos .row {
+    --bs-gutter-x: 20px;
+    --bs-gutter-y: 12px;
+  }
+
+  .genero {
+    min-height: 96px;
+    padding: 16px;
+    font-size: 16px;
+  }
+
+  // -----------------------------------------------------------
+  // Biblioteca: filtros y filas
+  // -----------------------------------------------------------
+  .biblioteca__barra {
+    margin-bottom: 20px;
+  }
+
+  .biblioteca__acciones {
+    display: none;
+  }
+
+  .biblioteca__filtros {
+    width: 100%;
+  }
+
+  .biblioteca__pills {
+    gap: 14px;
+
+    .nav-link {
+      height: 36px;
+      padding: 0 16px;
+      font-size: 14px;
+      line-height: 34px;
+    }
+  }
+
+  .pagina-biblioteca .row {
+    --bs-gutter-x: 0px;
+    --bs-gutter-y: 20px;
+  }
+
+  .biblioteca-item {
+    flex-direction: row;
+    align-items: center;
+    gap: 13px;
+    height: 52px;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background-color: transparent;
+  }
+
+  .biblioteca-item__enlace {
+    flex: 1 1 auto;
+    flex-direction: row;
+    align-items: center;
+    gap: 13px;
+  }
+
+  .biblioteca-item__portada {
+    width: 52px;
+    height: 52px;
+    flex: 0 0 52px;
+    aspect-ratio: auto;
+    border-radius: 4px;
+
+    &--crear {
+      border: 0;
+
+      > img {
+        width: 24px;
+        height: 24px;
+        padding: 0;
+        border-radius: 0;
+        background-color: transparent;
+      }
+    }
+  }
+
+  .biblioteca-item__cuerpo {
+    min-width: 0;
+    padding-top: 0;
+  }
+
+  .biblioteca-item__opciones {
+    @include centrar;
+    flex: 0 0 auto;
+    width: 40px;
+    height: 40px;
+    margin-left: 8px;
+    padding: 0;
+    border: 0;
+    background-color: transparent;
+
+    img {
+      width: 24px;
+      height: 6px;
+      transform: rotate(90deg);
+    }
+
+    @include foco;
+  }
+
+  // -----------------------------------------------------------
+  // Perfil
+  // -----------------------------------------------------------
+  .perfil__contenido {
+    max-width: none;
+  }
+
+  .perfil__avatar {
+    width: 96px;
+    height: 96px;
+  }
+
+  .perfil__nombre {
+    margin-bottom: 6px;
+  }
+
+  .perfil__usuario {
+    font-size: 18px;
+  }
+
+  .perfil__estadisticas {
+    margin: 17px 0 0;
+
+    li {
+      position: relative;
+      flex: 1 1 0;
+      min-width: 0;
+      padding: 0 8px;
+
+      + li {
+        border-left: 0;
+
+        &::before {
+          content: "";
+          position: absolute;
+          top: 50%;
+          left: 0;
+          width: 1px;
+          height: 44px;
+          background-color: $color-borde;
+          transform: translateY(-50%);
+        }
+      }
+    }
+  }
+
+  .perfil__opciones {
+    margin-top: 29px;
+    overflow: visible;
+    border: 0;
+    border-radius: 0;
+    background-color: transparent;
+  }
+
+  .perfil__lista {
+    border-top: 1px solid $color-borde;
+    border-bottom: 1px solid $color-borde;
+  }
+
+  .perfil__enlace {
+    gap: 16px;
+    min-height: 55px;
+    padding: 0;
+    font-size: 16px;
+  }
+
+  // -----------------------------------------------------------
+  // Reproductor inferior (mini reproductor)
+  // -----------------------------------------------------------
+  .reproductor {
+    bottom: $alto-nav-movil;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    height: $alto-reproductor-movil;
+    padding: 0 15px;
+    border-top: 1px solid $color-borde;
+  }
+
+  .reproductor__pista {
+    flex: 1 1 auto;
+    gap: 0;
+    min-width: 0;
+  }
+
+  .reproductor__portada {
+    display: none;
+  }
+
+  .reproductor__controles {
+    flex: 0 0 auto;
+    gap: 12px;
+  }
+
+  .reproductor__control {
+    width: 32px;
+    height: 32px;
+
+    img {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  .reproductor__control--play {
+    width: 40px;
+    height: 40px;
+
+    img {
+      width: 40px;
+      height: 40px;
+    }
+  }
+
+  .reproductor__control--opcional,
+  .reproductor__progreso {
+    display: none;
+  }
+
+  // -----------------------------------------------------------
+  // Pantalla del reproductor
+  // -----------------------------------------------------------
+  .reproductor-pagina {
+    padding: 32px 15px 48px;
+  }
+
+  .reproductor-pagina__origen {
+    display: none;
+  }
+
+  .reproductor-pagina__contenido {
+    width: 100%;
+    max-width: none;
+    margin-top: 28px;
+  }
+
+  .reproductor-pagina__portada {
+    width: 308px;
+    max-width: 100%;
+    margin: 0 auto;
+    border-radius: 12px;
+  }
+
+  .reproductor-pagina__meta {
+    margin-top: 8px;
+  }
+
+  .reproductor-pagina__titulo {
+    font-size: 26px;
+  }
+
+  .reproductor-pagina__me-gusta {
+    width: 40px;
+    height: 40px;
+    margin-top: 16px;
+  }
+
+  .reproductor-pagina__progreso {
+    margin-top: 24px;
+  }
+
+  .reproductor-pagina__tiempos {
+    margin-top: 6px;
+  }
+
+  .reproductor-pagina__controles {
+    gap: 24px;
+    margin-top: 28px;
+  }
+
+  .reproductor-pagina__control--play {
+    width: 72px;
+    height: 72px;
+
+    img {
+      width: 72px;
+      height: 72px;
+    }
+  }
+
+  .reproductor-pagina__acciones {
+    gap: 13px;
+    max-width: none;
+    margin-top: 60px;
+  }
+
+  .reproductor-pagina__accion {
+    height: 71px;
+    font-size: 14px;
+  }
+}

@@ -1,0 +1,205 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Music: descubre canciones, álbumes y listas personalizadas.">
+    <title>Music · Inicio</title>
+    <link rel="icon" href="img/logo-app.png" type="image/png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="scss/style.css">
+</head>
+
+<body class="pagina-inicio">
+    <a class="saltar-contenido" href="#contenido">Saltar al contenido principal</a>
+
+    <header class="cabecera">
+        <a class="marca" href="index.html" aria-label="Music, ir al inicio">
+            <img class="marca__logo" src="img/logo-app.png" alt="Logotipo de Music" width="36" height="36">
+            <span class="marca__texto">
+                <span class="marca__titulo">Music</span>
+                <span class="marca__subtitulo">Navegación</span>
+            </span>
+        </a>
+
+        <form class="buscador-cabecera" role="search" action="#" method="get">
+            <img class="icono" src="img/lupa-buscar.png" alt="Icono de búsqueda" width="24" height="24">
+            <label class="visually-hidden" for="buscador-global">Buscar canciones, artistas o álbumes</label>
+            <input class="form-control" id="buscador-global" name="q" type="search"
+                placeholder="¿Qué quieres escuchar?">
+        </form>
+
+        <div class="cabecera__acciones">
+            <button class="btn btn-secundario" type="button">Iniciar sesión</button>
+            <a class="btn btn-primary" href="registro.html">Registrarse</a>
+        </div>
+
+        <a class="avatar-movil" href="perfil.html" aria-label="Ir a mi perfil">
+            <img src="img/perfil-activado.png" width="20" height="20">
+        </a>
+    </header>
+
+    <aside class="menu-lateral">
+        <nav aria-label="Navegación principal">
+            <ul class="menu-lateral__lista">
+                <li>
+                    <a class="menu-lateral__enlace activo" href="index.html" aria-current="page">
+                        <img src="img/inicio-activo.png" alt="Icono de inicio" width="24" height="24">
+                        Inicio
+                    </a>
+                </li>
+                <li>
+                    <a class="menu-lateral__enlace" href="buscar.html">
+                        <img src="img/buscar-desactivado.png" alt="Icono de buscar" width="24" height="24">
+                        Buscar
+                    </a>
+                </li>
+                <li>
+                    <a class="menu-lateral__enlace" href="biblioteca.html">
+                        <img src="img/biblioteca-desactivado.png" alt="Icono de biblioteca" width="24" height="24">
+                        Biblioteca
+                    </a>
+                </li>
+                <li>
+                    <a class="menu-lateral__enlace" href="perfil.html">
+                        <img src="img/perfil-desactivado.png" alt="Icono de perfil" width="24" height="24">
+                        Perfil
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </aside>
+
+    <main class="contenido" id="contenido">
+        <div class="container-fluid px-0">
+            <section aria-labelledby="titulo-inicio">
+                <h1  id="titulo-inicio">Inicio</h1>
+                <h2 >Canciones y álbumes recomendados</h2>
+
+                <div class="row g-4">
+                    <article class="col-6 col-md-3">
+                        <a class="tarjeta-cancion h-100" href="reproductor.html">
+                            <div class="card h-100">
+                                <img class="tarjeta-cancion__imagen card-img-top" src="img/dtmf-album.png"
+                                    alt="Portada de Veldá" width="330" height="246">
+                                <div class="tarjeta-cancion__cuerpo card-body">
+                                    <h3 class="tarjeta-cancion__titulo card-title">Veldá</h3>
+                                    <p class="tarjeta-cancion__artista card-text">Bad Bunny</p>
+                                </div>
+                            </div>
+                        </a>
+                    </article>
+
+                    <article class="col-6 col-md-3">
+                        <a class="tarjeta-cancion h-100" href="reproductor.html">
+                            <div class="card h-100">
+                                <img class="tarjeta-cancion__imagen card-img-top" src="img/primera-musa.jpg"
+                                    alt="Portada de Luces de colores" width="330" height="246">
+                                <div class="tarjeta-cancion__cuerpo card-body">
+                                    <h3 class="tarjeta-cancion__titulo card-title">LUCES DE COLORES</h3>
+                                    <p class="tarjeta-cancion__artista card-text">Omar Courtz</p>
+                                </div>
+                            </div>
+                        </a>
+                    </article>
+
+                    <article class="col-6 col-md-3">
+                        <a class="tarjeta-cancion h-100" href="reproductor.html">
+                            <div class="card h-100">
+                                <img class="tarjeta-cancion__imagen card-img-top" src="img/scat-pack.png"
+                                    alt="Portada de Scat Pack" width="330" height="246">
+                                <div class="tarjeta-cancion__cuerpo card-body">
+                                    <h3 class="tarjeta-cancion__titulo card-title">Scat Pack</h3>
+                                    <p class="tarjeta-cancion__artista card-text">Clarent &amp; Omar Courtz</p>
+                                </div>
+                            </div>
+                        </a>
+                    </article>
+
+                    <article class="col-6 col-md-3">
+                        <a class="tarjeta-cancion h-100" href="reproductor.html">
+                            <div class="card h-100">
+                                <img class="tarjeta-cancion__imagen card-img-top" src="img/flipa.png"
+                                    alt="Portada de Flipa" width="330" height="246">
+                                <div class="tarjeta-cancion__cuerpo card-body">
+                                    <h3 class="tarjeta-cancion__titulo card-title">Flipa</h3>
+                                    <p class="tarjeta-cancion__artista card-text">JC Reyes</p>
+                                </div>
+                            </div>
+                        </a>
+                    </article>
+
+                    <article class="col-12 col-md-6">
+                        <a class="tarjeta-cancion tarjeta-cancion--album h-100" href="reproductor.html">
+                            <div class="card h-100">
+                                <img class="tarjeta-cancion__imagen card-img-top" src="img/primer-dia-de-clases.png"
+                                    alt="Portada del álbum Primer día de clases" width="504" height="246">
+                                <div class="tarjeta-cancion__cuerpo card-body">
+                                    <h3 class="tarjeta-cancion__titulo card-title">Primer día de clases</h3>
+                                    <p class="tarjeta-cancion__artista card-text">Mora</p>
+                                </div>
+                            </div>
+                        </a>
+                    </article>
+
+                    <article class="col-12 col-md-6">
+                        <a class="tarjeta-cancion tarjeta-cancion--album h-100" href="reproductor.html">
+                            <div class="card h-100">
+                                <img class="tarjeta-cancion__imagen card-img-top" src="img/easy-money.png"
+                                    alt="Portada del álbum Easy Money Baby" width="504" height="246">
+                                <div class="tarjeta-cancion__cuerpo card-body">
+                                    <h3 class="tarjeta-cancion__titulo card-title">Easy Money Baby</h3>
+                                    <p class="tarjeta-cancion__artista card-text">Myke Towers</p>
+                                </div>
+                            </div>
+                        </a>
+                    </article>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="reproductor">
+        <h2 class="visually-hidden">Reproductor de audio</h2>
+
+        <div class="reproductor__pista">
+            <img class="reproductor__portada" src="img/dtmf-album.png" alt="Portada de Veldá" width="64"
+                height="64">
+            <div class="reproductor__info">
+                <p class="reproductor__titulo">Veldá</p>
+                <p class="reproductor__artista">Bad Bunny</p>
+            </div>
+        </div>
+
+        <div class="reproductor__controles">
+            <button class="reproductor__control reproductor__control--opcional" type="button" aria-label="Activar modo aleatorio">
+                <img src="img/aleatorio.png" width="24" height="24">
+            </button>
+            <button class="reproductor__control reproductor__control--opcional" type="button" aria-label="Me gusta">
+                <img src="img/corazon.png" width="24" height="24">
+            </button>
+            <button class="reproductor__control reproductor__control--opcional" type="button" aria-label="Añadir a una lista">
+                <img src="img/mas.png" width="24" height="24">
+            </button>
+            <button class="reproductor__control" type="button" aria-label="Canción anterior">
+                <img src="img/cancion-anterior.png" width="24" height="24">
+            </button>
+            <button class="reproductor__control reproductor__control--play" type="button" aria-label="Reproducir">
+                <img src="img/play.png" width="36" height="36">
+            </button>
+            <button class="reproductor__control" type="button" aria-label="Siguiente canción">
+                <img src="img/siguiente-cancion.png" width="24" height="24">
+            </button>
+        </div>
+
+        <div class="reproductor__progreso">
+            <span class="reproductor__tiempo">02:14</span>
+            <label class="visually-hidden" for="progreso-inicio">Progreso de la canción</label>
+            <input class="barra-progreso" id="progreso-inicio" type="range" min="0" max="234" value="134">
+            <span class="reproductor__tiempo">03:54</span>
+        </div>
+    </footer>
+</body>
+
+</html>

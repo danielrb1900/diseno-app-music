@@ -1,0 +1,36 @@
+// =============================================================
+// MIXINS
+// Utilidades sencillas para no repetir código.
+// =============================================================
+
+@use 'variables' as *;
+
+// Anillo de foco accesible
+@mixin foco($color: $color-primario) {
+  &:focus-visible {
+    outline: 2px dashed $color;
+    outline-offset: 3px;
+    box-shadow: none;
+  }
+}
+
+// Centrado con flexbox
+@mixin centrar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// Recorta un texto en una sola línea
+@mixin truncar {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// Reglas que solo se aplican en móvil (menos de 768px)
+@mixin movil {
+  @media (max-width: $punto-movil) {
+    @content;
+  }
+}

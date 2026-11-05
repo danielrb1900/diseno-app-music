@@ -1,0 +1,300 @@
+// =============================================================
+// MUSIC · HOJA DE ESTILOS PRINCIPAL
+// Compilar con: npx sass scss/style.scss css/style.css --no-source-map
+// =============================================================
+
+// 1. Imports
+@use 'variables' as *;
+@use 'mixins' as *;
+@use 'botones';
+@use 'componentes';
+
+// 2. Base
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  background-color: $color-fondo;
+  color: $color-texto;
+  font-family: $fuente-base;
+  font-size: $tamano-base;
+  line-height: 1.45;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin-top: 0;
+  color: $color-texto;
+  font-weight: 700;
+}
+
+h1 {
+  font-size: $tamano-h1;
+  line-height: 1.2;
+}
+
+h2 {
+  font-size: $tamano-h2;
+  line-height: 1.2;
+}
+
+h3 {
+  font-size: $tamano-h3;
+  line-height: 1.25;
+}
+
+p {
+  margin-top: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color $transicion, background-color $transicion, border-color $transicion,
+    opacity $transicion;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+button {
+  font-family: inherit;
+}
+
+.titulo-pagina {
+  margin-bottom: 30px;
+}
+
+// Enlace de salto para navegación por teclado
+.saltar-contenido {
+  position: fixed;
+  top: 8px;
+  left: 8px;
+  z-index: 3000;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  background-color: $color-secundario;
+  color: #ffffff;
+  font-weight: 600;
+  transform: translateY(-160%);
+  transition: transform $transicion;
+
+  &:focus {
+    transform: translateY(0);
+  }
+}
+
+// Iconos
+.icono {
+  width: 24px;
+  height: 24px;
+  flex: 0 0 auto;
+  object-fit: contain;
+}
+
+.icono--blanco {
+  filter: brightness(0) invert(1);
+}
+
+// 3. Sobrescritura de Bootstrap
+.btn {
+  font-weight: 600;
+  line-height: 1;
+  transition: background-color $transicion, border-color $transicion, color $transicion,
+    opacity $transicion;
+}
+
+.btn:focus-visible {
+  outline: 2px dashed $color-primario;
+  outline-offset: 3px;
+  box-shadow: none;
+}
+
+.btn.btn-primary {
+  padding: 0.5rem 1.25rem;
+  border: 1.5px solid $color-primario;
+  border-radius: $radio-boton;
+  background-color: $color-primario;
+  color: #ffffff;
+  font-size: $tamano-base;
+
+  &:hover,
+  &:focus {
+    border-color: $color-primario-oscuro;
+    background-color: $color-primario-oscuro;
+    color: #ffffff;
+  }
+
+  &:active {
+    border-color: $color-primario-oscuro;
+    background-color: $color-primario-oscuro;
+    color: #ffffff;
+  }
+
+  &:disabled {
+    border-color: $color-borde;
+    background-color: $color-borde;
+    color: $color-texto-suave;
+  }
+}
+
+.btn.btn-secundario {
+  padding: 0.5rem 1.25rem;
+  border: 1.5px solid $color-secundario;
+  border-radius: $radio-boton;
+  background-color: transparent;
+  color: $color-secundario;
+  font-size: $tamano-base;
+
+  &:hover,
+  &:focus {
+    border-color: $color-secundario;
+    background-color: $color-superficie;
+    color: $color-secundario;
+  }
+
+  &:focus-visible {
+    outline-color: $color-secundario;
+  }
+
+  &:disabled {
+    border-color: $color-borde;
+    background-color: $color-borde;
+    color: $color-texto-suave;
+  }
+}
+
+.form-label {
+  margin-bottom: 0.4rem;
+  color: $color-texto;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.form-control {
+  padding: 0.65rem 0.95rem;
+  border: 1px solid $color-borde;
+  border-radius: $radio-campo;
+  background-color: $color-fondo;
+  color: $color-texto;
+  font-size: 14px;
+  transition: border-color $transicion, box-shadow $transicion;
+
+  &::placeholder {
+    color: $color-texto-suave;
+    opacity: 1;
+  }
+
+  &:hover {
+    border-color: $color-texto-suave;
+  }
+
+  &:focus {
+    border-color: $color-primario;
+    background-color: $color-fondo;
+    color: $color-texto;
+    box-shadow: 0 0 0 1px $color-primario;
+    outline: none;
+  }
+}
+
+.card {
+  background-color: $color-fondo;
+  border-color: $color-borde;
+  border-radius: $radio-tarjeta;
+  color: $color-texto;
+}
+
+.card-img-top {
+  border-radius: 0;
+}
+
+.nav-pills .nav-link {
+  color: $color-texto;
+  border-radius: $radio-boton;
+}
+
+.nav-pills .nav-link.active {
+  background-color: $color-secundario;
+  color: #ffffff;
+}
+
+// =============================================================
+// Formulario de registro
+// =============================================================
+.pagina-registro {
+  .titulo-pagina {
+    margin-bottom: 28px;
+    text-align: center;
+  }
+
+  form {
+    max-width: 520px;
+    margin: 0 auto;
+    padding: 32px;
+    border: 1px solid $color-borde;
+    border-radius: 18px;
+    background-color: $color-fondo;
+    box-shadow: 0 18px 45px rgba(35, 26, 29, 0.08);
+  }
+
+  form > .mb-3 {
+    margin-bottom: 1.35rem !important;
+  }
+
+  .form-label {
+    margin-bottom: 0.45rem;
+    color: $color-texto-suave;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .form-control {
+    padding: 0.75rem 1rem;
+    border-radius: 12px;
+    background-color: #ffffff;
+
+    &:focus {
+      box-shadow: 0 0 0 3px rgba($color-primario, 0.16);
+    }
+  }
+
+  .form-text {
+    color: $color-texto-suave;
+  }
+
+  .btn.btn-primary {
+    margin-top: 0.35rem;
+    padding: 0.75rem 1.25rem;
+  }
+
+  .invalid-feedback {
+    font-size: 13px;
+    line-height: 1.35;
+  }
+}
+
+@include movil {
+  .pagina-registro {
+    .titulo-pagina {
+      margin-bottom: 20px;
+    }
+
+    form {
+      padding: 22px 16px;
+      border-radius: 14px;
+    }
+  }
+}

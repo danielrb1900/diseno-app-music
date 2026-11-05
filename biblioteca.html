@@ -1,0 +1,260 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Tu biblioteca de listas y canciones guardadas en Music.">
+    <title>Music · Tu biblioteca</title>
+    <link rel="icon" href="img/logo-app.png" type="image/png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="scss/style.css">
+</head>
+
+<body class="pagina-biblioteca">
+    <a class="saltar-contenido" href="#contenido">Saltar al contenido principal</a>
+
+    <header class="cabecera">
+        <a class="marca" href="index.html" aria-label="Music, ir al inicio">
+            <img class="marca__logo" src="img/logo-app.png" alt="Logotipo de Music" width="36" height="36">
+            <span class="marca__texto">
+                <span class="marca__titulo">Music</span>
+                <span class="marca__subtitulo">Navegación</span>
+            </span>
+        </a>
+
+        <div class="cabecera__acciones">
+            <button class="btn btn-secundario" type="button">Iniciar sesión</button>
+            <a class="btn btn-primary" href="registro.html">Registrarse</a>
+        </div>
+
+        <a class="avatar-movil" href="perfil.html" aria-label="Ir a mi perfil">
+            <img src="img/perfil-activado.png" width="20" height="20">
+        </a>
+    </header>
+
+    <aside class="menu-lateral">
+        <nav aria-label="Navegación principal">
+            <ul class="menu-lateral__lista">
+                <li>
+                    <a class="menu-lateral__enlace" href="index.html">
+                        <img src="img/inicio-desactivado.png" alt="Icono de inicio" width="24" height="24">
+                        Inicio
+                    </a>
+                </li>
+                <li>
+                    <a class="menu-lateral__enlace" href="buscar.html">
+                        <img src="img/buscar-desactivado.png" alt="Icono de buscar" width="24" height="24">
+                        Buscar
+                    </a>
+                </li>
+                <li>
+                    <a class="menu-lateral__enlace activo" href="biblioteca.html" aria-current="page">
+                        <img src="img/biblioteca-activo.png" alt="Icono de biblioteca" width="24" height="24">
+                        Biblioteca
+                    </a>
+                </li>
+                <li>
+                    <a class="menu-lateral__enlace" href="perfil.html">
+                        <img src="img/perfil-desactivado.png" alt="Icono de perfil" width="24" height="24">
+                        Perfil
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </aside>
+
+    <main class="contenido" id="contenido">
+        <div class="container-fluid px-0">
+            <section aria-labelledby="titulo-biblioteca">
+                <h1 class="titulo-pagina" id="titulo-biblioteca">Tu biblioteca</h1>
+
+                <div class="biblioteca__barra">
+                    <nav class="biblioteca__filtros" aria-label="Filtrar la biblioteca">
+                        <ul class="nav nav-pills biblioteca__pills">
+                            <li class="nav-item">
+                                <button class="nav-link active" type="button" aria-current="page">Listas</button>
+                            </li>
+                            <li class="nav-item">
+                                <button class="nav-link" type="button">Álbumes</button>
+                            </li>
+                            <li class="nav-item">
+                                <button class="nav-link" type="button">Artistas</button>
+                            </li>
+                            <li class="nav-item">
+                                <button class="nav-link" type="button">Canciones</button>
+                            </li>
+                        </ul>
+                    </nav>
+
+                    <div class="biblioteca__acciones">
+                        <button class="btn btn-ordenar" type="button">Ordenar</button>
+
+                        <form class="buscador-biblioteca" role="search" action="#" method="get">
+                            <img class="icono" src="img/lupa-buscar.png" alt="Icono de búsqueda" width="18" height="18">
+                            <label class="visually-hidden" for="buscador-biblioteca">Buscar en la
+                                biblioteca</label>
+                            <input class="form-control" id="buscador-biblioteca" name="q" type="search"
+                                placeholder="Buscar en biblioteca">
+                        </form>
+                    </div>
+                </div>
+
+                <div class="row g-4">
+                    <div class="col-12 col-md-3">
+                        <article class="biblioteca-item">
+                            <a class="biblioteca-item__enlace" href="#">
+                                <span class="biblioteca-item__portada biblioteca-item__portada--crear">
+                                    <img src="img/mas.png" alt="Crear lista" width="24" height="24">
+                                </span>
+                                <div class="biblioteca-item__cuerpo">
+                                    <span class="biblioteca-item__titulo">Crear lista</span>
+                                    <span class="biblioteca-item__meta">Nueva lista</span>
+                                </div>
+                            </a>
+                        </article>
+                    </div>
+
+                    <div class="col-12 col-md-3">
+                        <article class="biblioteca-item">
+                            <a class="biblioteca-item__enlace" href="#">
+                                <span class="biblioteca-item__portada">
+                                    <img src="img/scat-pack.png" alt="Portada de la lista Canciones que me gustan"
+                                        width="300" height="300">
+                                </span>
+                                <div class="biblioteca-item__cuerpo">
+                                    <h2 class="biblioteca-item__titulo">Canciones que me gustan</h2>
+                                    <span class="biblioteca-item__meta">Lista · 48 canciones</span>
+                                </div>
+                            </a>
+                            <button class="biblioteca-item__opciones" type="button"
+                                aria-label="Opciones de la lista Canciones que me gustan">
+                                <img src="img/tres.puntos.png" width="24" height="6">
+                            </button>
+                        </article>
+                    </div>
+
+                    <div class="col-12 col-md-3">
+                        <article class="biblioteca-item">
+                            <a class="biblioteca-item__enlace" href="#">
+                                <span class="biblioteca-item__portada">
+                                    <img src="img/dtmf-album.png" alt="Portada de la lista Lista 1" width="300"
+                                        height="300">
+                                </span>
+                                <div class="biblioteca-item__cuerpo">
+                                    <h2 class="biblioteca-item__titulo">Lista 1</h2>
+                                    <span class="biblioteca-item__meta">Lista · 12 canciones</span>
+                                </div>
+                            </a>
+                            <button class="biblioteca-item__opciones" type="button"
+                                aria-label="Opciones de la lista Lista 1">
+                                <img src="img/tres.puntos.png" width="24" height="6">
+                            </button>
+                        </article>
+                    </div>
+
+                    <div class="col-12 col-md-3">
+                        <article class="biblioteca-item">
+                            <a class="biblioteca-item__enlace" href="#">
+                                <span class="biblioteca-item__portada">
+                                    <img src="img/primera-musa.jpg" alt="Portada de la lista Lista 2" width="300"
+                                        height="300">
+                                </span>
+                                <div class="biblioteca-item__cuerpo">
+                                    <h2 class="biblioteca-item__titulo">Lista 2</h2>
+                                    <span class="biblioteca-item__meta">Lista · 25 canciones</span>
+                                </div>
+                            </a>
+                            <button class="biblioteca-item__opciones" type="button"
+                                aria-label="Opciones de la lista Lista 2">
+                                <img src="img/tres.puntos.png" width="24" height="6">
+                            </button>
+                        </article>
+                    </div>
+
+                    <div class="col-12 col-md-3">
+                        <article class="biblioteca-item">
+                            <a class="biblioteca-item__enlace" href="#">
+                                <span class="biblioteca-item__portada">
+                                    <img src="img/flipa.png" alt="Portada de la lista Lista 3" width="300"
+                                        height="300">
+                                </span>
+                                <div class="biblioteca-item__cuerpo">
+                                    <h2 class="biblioteca-item__titulo">Lista 3</h2>
+                                    <span class="biblioteca-item__meta">Lista · 8 canciones</span>
+                                </div>
+                            </a>
+                            <button class="biblioteca-item__opciones" type="button"
+                                aria-label="Opciones de la lista Lista 3">
+                                <img src="img/tres.puntos.png" width="24" height="6">
+                            </button>
+                        </article>
+                    </div>
+
+                    <div class="col-12 col-md-3">
+                        <article class="biblioteca-item">
+                            <a class="biblioteca-item__enlace" href="#">
+                                <span class="biblioteca-item__portada">
+                                    <img src="img/easy-money.png" alt="Portada de la lista Lista 4" width="300"
+                                        height="300">
+                                </span>
+                                <div class="biblioteca-item__cuerpo">
+                                    <h2 class="biblioteca-item__titulo">Lista 4</h2>
+                                    <span class="biblioteca-item__meta">Lista · 31 canciones</span>
+                                </div>
+                            </a>
+                            <button class="biblioteca-item__opciones" type="button"
+                                aria-label="Opciones de la lista Lista 4">
+                                <img src="img/tres.puntos.png" width="24" height="6">
+                            </button>
+                        </article>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="reproductor">
+        <h2 class="visually-hidden">Reproductor de audio</h2>
+
+        <div class="reproductor__pista">
+            <img class="reproductor__portada" src="img/dtmf-album.png" alt="Portada de Veldá" width="64"
+                height="64">
+            <div class="reproductor__info">
+                <p class="reproductor__titulo">Veldá</p>
+                <p class="reproductor__artista">Bad Bunny</p>
+            </div>
+        </div>
+
+        <div class="reproductor__controles">
+            <button class="reproductor__control reproductor__control--opcional" type="button" aria-label="Activar modo aleatorio">
+                <img src="img/aleatorio.png" width="24" height="24">
+            </button>
+            <button class="reproductor__control reproductor__control--opcional" type="button" aria-label="Me gusta">
+                <img src="img/corazon.png" width="24" height="24">
+            </button>
+            <button class="reproductor__control reproductor__control--opcional" type="button" aria-label="Añadir a una lista">
+                <img src="img/mas.png" width="24" height="24">
+            </button>
+            <button class="reproductor__control" type="button" aria-label="Canción anterior">
+                <img src="img/cancion-anterior.png" width="24" height="24">
+            </button>
+            <button class="reproductor__control reproductor__control--play" type="button" aria-label="Reproducir">
+                <img src="img/play.png" width="36" height="36">
+            </button>
+            <button class="reproductor__control" type="button" aria-label="Siguiente canción">
+                <img src="img/siguiente-cancion.png" width="24" height="24">
+            </button>
+        </div>
+
+        <div class="reproductor__progreso">
+            <span class="reproductor__tiempo">02:14</span>
+            <label class="visually-hidden" for="progreso-biblioteca">Progreso de la canción</label>
+            <input class="barra-progreso" id="progreso-biblioteca" type="range" min="0" max="234"
+                value="134">
+            <span class="reproductor__tiempo">03:54</span>
+        </div>
+    </footer>
+</body>
+
+</html>

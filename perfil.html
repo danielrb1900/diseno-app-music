@@ -1,0 +1,181 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Consulta y edita tu perfil de Music.">
+    <title>Music · Perfil</title>
+    <link rel="icon" href="img/logo-app.png" type="image/png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="scss/style.css">
+</head>
+
+<body class="pagina-perfil">
+    <a class="saltar-contenido" href="#contenido">Saltar al contenido principal</a>
+
+    <header class="cabecera">
+        <a class="marca" href="index.html" aria-label="Music, ir al inicio">
+            <img class="marca__logo" src="img/logo-app.png" alt="Logotipo de Music" width="36" height="36">
+            <span class="marca__texto">
+                <span class="marca__titulo">Music</span>
+                <span class="marca__subtitulo">Navegación</span>
+            </span>
+        </a>
+
+        <div class="cabecera__acciones">
+            <button class="btn btn-secundario" type="button">Iniciar sesión</button>
+            <a class="btn btn-primary" href="registro.html">Registrarse</a>
+        </div>
+
+        <a class="avatar-movil" href="perfil.html" aria-label="Ir a mi perfil">
+            <img src="img/perfil-activado.png" width="20" height="20">
+        </a>
+    </header>
+
+    <aside class="menu-lateral">
+        <nav aria-label="Navegación principal">
+            <ul class="menu-lateral__lista">
+                <li>
+                    <a class="menu-lateral__enlace" href="index.html">
+                        <img src="img/inicio-desactivado.png" alt="Icono de inicio" width="24" height="24">
+                        Inicio
+                    </a>
+                </li>
+                <li>
+                    <a class="menu-lateral__enlace" href="buscar.html">
+                        <img src="img/buscar-desactivado.png" alt="Icono de buscar" width="24" height="24">
+                        Buscar
+                    </a>
+                </li>
+                <li>
+                    <a class="menu-lateral__enlace" href="biblioteca.html">
+                        <img src="img/biblioteca-desactivado.png" alt="Icono de biblioteca" width="24" height="24">
+                        Biblioteca
+                    </a>
+                </li>
+                <li>
+                    <a class="menu-lateral__enlace activo" href="perfil.html" aria-current="page">
+                        <img src="img/perfil-activado.png" alt="Icono de perfil" width="24" height="24">
+                        Perfil
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </aside>
+
+    <main class="contenido" id="contenido">
+        <div class="container-fluid px-0">
+            <section class="perfil" aria-labelledby="titulo-perfil">
+                <h1 class="titulo-pagina" id="titulo-perfil">Perfil</h1>
+
+                <div class="perfil__contenido">
+                    <header class="perfil__cabecera">
+                        <div class="perfil__avatar">
+                            <img src="img/perfil-activado.png" alt="Avatar del usuario" width="48" height="48">
+                        </div>
+                        <h2 class="perfil__nombre">Nombre de usuario</h2>
+                        <p class="perfil__usuario">@usuario</p>
+                    </header>
+
+                    <ul class="perfil__estadisticas">
+                        <li>
+                            <strong>12</strong>
+                            <span>Listas</span>
+                        </li>
+                        <li>
+                            <strong>128</strong>
+                            <span>Seguidores</span>
+                        </li>
+                        <li>
+                            <strong>64</strong>
+                            <span>Siguiendo</span>
+                        </li>
+                    </ul>
+
+                    <nav class="perfil__opciones" aria-label="Opciones de la cuenta">
+                        <ul class="perfil__lista">
+                            <li>
+                                <a class="perfil__enlace" href="#">
+                                    <img class="perfil__icono" src="img/lapiz-editar.png" alt="Editar perfil" width="24"
+                                        height="24">
+                                    <span>Editar perfil</span>
+                                    <img class="perfil__flecha" src="img/flecha-derecha.png" alt="Abrir editar perfil"
+                                        width="8" height="14">
+                                </a>
+                            </li>
+                            <li>
+                                <a class="perfil__enlace" href="#">
+                                    <img class="perfil__icono" src="img/ajustes.png" alt="Ajustes" width="24"
+                                        height="24">
+                                    <span>Ajustes</span>
+                                    <img class="perfil__flecha" src="img/flecha-derecha.png" alt="Abrir ajustes"
+                                        width="8" height="14">
+                                </a>
+                            </li>
+                            <li>
+                                <a class="perfil__enlace" href="#">
+                                    <img class="perfil__icono" src="img/suscripcion.png" alt="Suscripción" width="24"
+                                        height="24">
+                                    <span>Suscripción</span>
+                                    <img class="perfil__flecha" src="img/flecha-derecha.png" alt="Abrir suscripción"
+                                        width="8" height="14">
+                                </a>
+                            </li>
+                            <li>
+                                <a class="perfil__enlace" href="index.html">
+                                    <img class="perfil__icono" src="img/cerrar-sesion.png" alt="Cerrar sesión" width="24"
+                                        height="24">
+                                    <span>Cerrar sesión</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="reproductor">
+        <h2 class="visually-hidden">Reproductor de audio</h2>
+
+        <div class="reproductor__pista">
+            <img class="reproductor__portada" src="img/dtmf-album.png" alt="Portada de Veldá" width="64"
+                height="64">
+            <div class="reproductor__info">
+                <p class="reproductor__titulo">Veldá</p>
+                <p class="reproductor__artista">Bad Bunny</p>
+            </div>
+        </div>
+
+        <div class="reproductor__controles">
+            <button class="reproductor__control reproductor__control--opcional" type="button" aria-label="Activar modo aleatorio">
+                <img src="img/aleatorio.png" width="24" height="24">
+            </button>
+            <button class="reproductor__control reproductor__control--opcional" type="button" aria-label="Me gusta">
+                <img src="img/corazon.png" width="24" height="24">
+            </button>
+            <button class="reproductor__control reproductor__control--opcional" type="button" aria-label="Añadir a una lista">
+                <img src="img/mas.png" width="24" height="24">
+            </button>
+            <button class="reproductor__control" type="button" aria-label="Canción anterior">
+                <img src="img/cancion-anterior.png" width="24" height="24">
+            </button>
+            <button class="reproductor__control reproductor__control--play" type="button" aria-label="Reproducir">
+                <img src="img/play.png" width="36" height="36">
+            </button>
+            <button class="reproductor__control" type="button" aria-label="Siguiente canción">
+                <img src="img/siguiente-cancion.png" width="24" height="24">
+            </button>
+        </div>
+
+        <div class="reproductor__progreso">
+            <span class="reproductor__tiempo">02:14</span>
+            <label class="visually-hidden" for="progreso-perfil">Progreso de la canción</label>
+            <input class="barra-progreso" id="progreso-perfil" type="range" min="0" max="234" value="134">
+            <span class="reproductor__tiempo">03:54</span>
+        </div>
+    </footer>
+</body>
+
+</html>
