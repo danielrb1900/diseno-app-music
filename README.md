@@ -2,10 +2,10 @@
 ## 1. Index.html
 ![alt text](img/validaciones/index.png)
 
-## 2. Buscar
+## 2. Buscar.html
 ![alt text](img/validaciones/buscar.png)
 
-## 3. Biblioteca
+## 3. Biblioteca.html
 ![alt text](img/validaciones/biblioteca.png)
 
 ## 4. Perfil.html
@@ -17,7 +17,7 @@
 ## 6. Registro.html
 ![alt text](img/validaciones/registro.png)
 
-## 7. Inicio sesión
+## 7. Inicio sesión.html
 ![alt text](img/validaciones/inicio-sesion.png)
 
 # Validadión CSS
