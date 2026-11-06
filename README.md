@@ -21,3 +21,4 @@
 ![alt text](img/validaciones/inicio-sesion.png)
 
 # Validadión CSS
+![alt text](img/validaciones/validatorCss.png)
