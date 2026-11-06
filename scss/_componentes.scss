@@ -1,6 +1,5 @@
 ﻿// =============================================================
 // COMPONENTES Y ESTRUCTURA
-// Layout de escritorio de Music.
 // =============================================================
 
 @use 'variables' as *;
@@ -784,8 +783,6 @@
 
 // -------------------------------------------------------------
 // Barra de progreso
-// Se deja el control nativo para que el relleno siga al pomo
-// sin necesidad de JavaScript.
 // -------------------------------------------------------------
 .barra-progreso {
   width: 100%;
@@ -1007,8 +1004,6 @@
 
 // =============================================================
 // VERSIÓN MÓVIL (menos de 768px)
-// Diseño de referencia: frames móviles de Figma (402 x 874).
-// Todo lo de este bloque deja intacto el escritorio.
 // =============================================================
 @include movil {
   // -----------------------------------------------------------

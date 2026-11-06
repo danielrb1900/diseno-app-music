@@ -1,6 +1,6 @@
-// Validación del formulario de registro.
-// Se carga con defer desde registro.html.
+// Validación del formulario de registro e inicio de sesión.
 
+// Variables de formulario de registro
 const formulario = document.getElementById("formulario-registro");
 
 const inputNombre = document.getElementById("input-nombre");
@@ -9,14 +9,23 @@ const inputPass = document.getElementById("input-pass");
 const inputRepass = document.getElementById("input-repass");
 const exito = document.getElementById("registro-exito");
 
+
+// Variables de formulario de inicio de sesión
+const formularioInicioSesion = document.getElementById("formulario-inicio-sesion");
+
+const inputEmailInicio = document.getElementById("input-email-inicio");
+const inputPassInicio = document.getElementById("input-pass-inicio");
+const exitoInicio = document.getElementById("inicio-exito");
+
+// Validación del formulario de registro
 if (formulario) {
   formulario.addEventListener("submit", (ev) => {
     ev.preventDefault();
     ev.stopPropagation();
 
     comprobarNombre();
-    comprobarEmail();
-    comprobarContraseña();
+    comprobarEmail("registro");
+    comprobarContraseña("registro");
     comprobarContraseñaRepetida();
 
     const primerError = formulario.querySelector(".is-invalid");
@@ -29,6 +38,29 @@ if (formulario) {
     if (primerError) {
       primerError.focus();
     }
+  });
+}
+
+// Validación del formulario de inicio de sesión
+if (formularioInicioSesion) {
+  formularioInicioSesion.addEventListener("submit", (ev) => {
+    ev.preventDefault();
+    ev.stopPropagation();
+
+    comprobarEmail("inicio-sesión");
+    comprobarContraseña("inicio-sesión")
+
+    const primerError = formularioInicioSesion.querySelector(".is-invalid");
+
+    if (exitoInicio) {
+      exitoInicio.hidden = Boolean(primerError);
+      exitoInicio.textContent = primerError ? "" : "Sesión iniciada correctamente.";
+    }
+
+    if (primerError) {
+      primerError.focus();
+    }
+
   });
 }
 
@@ -56,6 +88,7 @@ function limpiarError(id, input) {
 }
 
 function comprobarNombre() {
+
   limpiarError("error-nombre", inputNombre);
 
   if (!inputNombre.checkValidity()) {
@@ -63,20 +96,42 @@ function comprobarNombre() {
   }
 }
 
-function comprobarEmail() {
-  limpiarError("error-email", inputEmail);
+function comprobarEmail(tipoFormulario) {
 
-  if (!inputEmail.checkValidity()) {
-    crearError("error-email", "Email no válido", inputEmail);
+  if (tipoFormulario === "registro") {
+    limpiarError("error-email", inputEmail);
+
+    if (!inputEmail.checkValidity()) {
+      crearError("error-email", "Email no válido", inputEmail);
+    }
+  } else {
+    limpiarError("error-email", inputEmailInicio);
+
+    if (!inputEmailInicio.checkValidity()) {
+      crearError("error-email", "Email no válido", inputEmailInicio);
+    }
   }
+
+
 }
 
-function comprobarContraseña() {
-  limpiarError("error-pass", inputPass);
+function comprobarContraseña(tipoFormulario) {
 
-  if (!inputPass.checkValidity()) {
-    crearError("error-pass", "Contraseña no válida", inputPass);
+  if (tipoFormulario === "registro") {
+    limpiarError("error-pass", inputPass);
+
+    if (!inputPass.checkValidity()) {
+      crearError("error-pass", "Contraseña no válida", inputPass);
+    }
+  } else {
+    limpiarError("error-pass", inputPassInicio);
+
+    if (!inputPassInicio.checkValidity()) {
+      crearError("error-pass", "Contraseña no válida", inputPassInicio);
+    }
   }
+
+
 }
 
 function comprobarContraseñaRepetida() {
