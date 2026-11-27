@@ -57,8 +57,8 @@ Licencia: CC0
 
 ## Audio 2 (Audio fail)
 Audio: audio-failed.mp3 \
-Autor: \
-Enlace: \
-Licencia: 
+Autor: u_8g40a9z0la (Pixabay)\
+Enlace: https://pixabay.com/es/sound-effects/pel%C3%ADculas-y-efectos-especiales-fail-234710/ \
+Licencia: Licencia de Pixabay
 
 
